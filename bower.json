@@ -23,9 +23,9 @@
         ".gitignore",
         ".jshintignore",
         ".jshintrc",
-        "bower.json",
-        "gruntfile.js",
+        "gruntFile.js",
         "package.json",
+        "publish.js",
         "README.md"
     ]
 }
