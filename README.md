@@ -13,7 +13,7 @@ This directive allows you to add [Google Maps Javascript API](https://developers
 You can get it from [Bower](http://bower.io/)
 
 ```sh
-bower install angular-ui-map
+bower install angular-ui-mapgaode
 ```  
 
 This will copy the UI.Map files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
@@ -21,8 +21,8 @@ This will copy the UI.Map files into a `bower_components` folder, along with its
 ```html
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-utils/modules/event/event.js "></script>
-<script type="text/javascript" src="bower_components/angular-ui-map/src/map.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>
+<script type="text/javascript" src="bower_components/angular-ui-mapgaode/src/ui-map.js"></script>
+<script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
 ```
 
 __Make sure to listen to the [callback parameter when loading the Google Maps API](https://developers.google.com/maps/documentation/javascript/examples/map-simple-async) !   
