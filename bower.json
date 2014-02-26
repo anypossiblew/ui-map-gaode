@@ -1,7 +1,7 @@
 {
   "author": "anypossiblew",
   "name": "angular-ui-mapgaode",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "http://angular-ui.github.com",
   "keywords": [
     "angular",
@@ -15,5 +15,17 @@
   },
   "devDependencies": {
     "angular-mocks": "1.x"
-  }
+  },
+  "ignore": [
+        "demo",
+        "test",
+        ".bowerrc",
+        ".gitignore",
+        ".jshintignore",
+        ".jshintrc",
+        "bower.json",
+        "gruntfile.js",
+        "package.json",
+        "README.md"
+    ],
 }
