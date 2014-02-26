@@ -1,12 +1,12 @@
 # UI.Map [![Build Status](https://secure.travis-ci.org/angular-ui/ui-map.png)](http://travis-ci.org/angular-ui/ui-map)
 
-This directive allows you to add [Google Maps Javascript API](https://developers.google.com/maps/) elements.
+This directive allows you to add [Gaode Maps Javascript API](http://api.amap.com/javascript) elements.
 
 ## Requirements
 
 - AngularJS
 - [UI.Event](https://github.com/angular-ui/ui-utils/blob/master/modules/event/event.js)
-- [Google Maps Javascript API 3.x](https://developers.google.com/maps/documentation/javascript/)
+- [Gaode Maps Javascript API 1.2](http://api.amap.com/javascript)
 
 ## Usage
 
@@ -25,12 +25,12 @@ This will copy the UI.Map files into a `bower_components` folder, along with its
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
 ```
 
-__Make sure to listen to the [callback parameter when loading the Google Maps API](https://developers.google.com/maps/documentation/javascript/examples/map-simple-async) !   
+__Make sure to listen to the [callback parameter when loading the Gaode Maps API](http://api.amap.com/javascript/guide#callback) !   
 The API must be fully loaded before this module !__  
-Here we name this callback `onGoogleReady`. To load your angular app after the Google Maps API you can start it with [angular.bootstrap](http://docs.angularjs.org/api/angular.bootstrap). 
+Here we name this callback `init`. To load your angular app after the Gaode Maps API you can start it with [angular.bootstrap](http://docs.angularjs.org/api/angular.bootstrap). 
 
 ```javascript
-function onGoogleReady() {
+function init() {
   angular.bootstrap(document.getElementById("map"), ['app.ui-map']);
 }
 ```
@@ -48,7 +48,7 @@ Finally, add the directive to your html:
   <div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>
 </section>
 ```
-Note that `myMap` will be a [google.maps.Map class](https://developers.google.com/maps/documentation/javascript/reference#Map), and `mapOptions` a [google.maps.MapOptions object](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) (see [below](#options)).
+Note that `myMap` will be a [AMap.Map class](http://api.amap.com/javascript/reference/map), and `mapOptions` a [AMap.MapOptions object](http://api.amap.com/javascript/reference/map#MapOption) (see [below](#options)).
 
 To see something it's better to add some CSS, like
 
@@ -58,14 +58,25 @@ To see something it's better to add some CSS, like
 
 ## Options
 
-[google.maps.MapOptions object](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) can be passed through the main directive attribute`ui-map`.
+[AMap.MapOptions object](http://api.amap.com/javascript/reference/map#MapOption) can be passed through the main directive attribute`ui-map`.
 
 ```javascript
 myAppModule.controller('MapCtrl', ['$scope', function ($scope) {
     $scope.mapOptions = {
-      center: new google.maps.LatLng(35.784, -78.670),
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      center: new AMap.LngLat(-78.670, 35.784),
+      
+      // map plugin config
+      toolbar: true,
+      scrollzoom: true,
+      maptype: true,
+      overview: true,
+      locatecity: true,
+      
+      // map-self config
+      resizeEnable: true, // 是否监控地图容器尺寸变化
+      
+      // ui map config
+      uiMapCache: true // 是否使用缓存来缓存此map dom，而不是每次链接跳转来都重新创建
     };
   }]);
 ```
@@ -74,7 +85,7 @@ myAppModule.controller('MapCtrl', ['$scope', function ($scope) {
 
 [UI.Event](http://angular-ui.github.io/ui-utils/#/event) allows you to specify custom behavior over user events. You just need to prefix the official event by __map-__ to bind a callback to it.  
 
-For example, the _click_ or *zoom_changed* event of the [google.maps.Map class](https://developers.google.com/maps/documentation/javascript/reference#Map) can be used through the UI.Event object keys __map-click__ and **map-zoom_changed** :
+For example, the _click_ or *zoom_changed* event of the [AMap.Map class](http://api.amap.com/javascript/reference/map) can be used through the UI.Event object keys __map-click__ and **map-zoom_changed** :
 
 ```html
 <section id="map" ng-controller="MapCtrl" >

@@ -1,6 +1,6 @@
 {
-  "name": "angular-ui-map-gaode",
-  "version": "0.5.0",
+  "name": "angular-ui-mapgaode",
+  "version": "0.1.0",
   "description": "This directive allows you to add map elements.",
   "author": "https://github.com/angular-ui/ui-map/graphs/contributors",
   "license": "MIT",
