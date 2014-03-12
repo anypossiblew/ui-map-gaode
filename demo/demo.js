@@ -7,7 +7,7 @@ function initCall() {
   angular.bootstrap(document.getElementById('map'), ['doc.ui-map']);
 }
 
-angular.module('doc.ui-map', ['ui.map', 'ui.bootstrap'])
+angular.module('doc.ui-map', ['ui.mapgaode', 'ui.bootstrap'])
   .controller('MapCtrl', ['$scope', function ($scope) {
 
     $scope.myMarkers = [];

@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-    var app = angular.module('ui.map', ['ui.event']);
+    var app = angular.module('ui.mapgaode', ['ui.event']);
     //Setup map events from a google map object to trigger on a given element too,
     //then we just use ui-event to catch events from an element
     function bindMapEvents(scope, eventsStr, googleObject, element) {

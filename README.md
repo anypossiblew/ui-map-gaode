@@ -16,7 +16,7 @@ You can get it from [Bower](http://bower.io/)
 bower install angular-ui-mapgaode
 ```  
 
-This will copy the UI.Map files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
+This will copy the UI.Mapgaode files into a `bower_components` folder, along with its dependencies. Load the script files in your application:
 
 ```html
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -35,10 +35,10 @@ function init() {
 }
 ```
 
-Add the UI.Map module as a dependency to your application module :
+Add the UI.Mapgaode module as a dependency to your application module :
 
 ```javascript
-var myAppModule = angular.module('app.ui-map', ['ui.map']);  
+var myAppModule = angular.module('app.ui-map', ['ui.mapgaode']);
 ```
 
 Finally, add the directive to your html:
