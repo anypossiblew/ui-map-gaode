@@ -23,7 +23,7 @@
         'uiMapConfig',
         '$parse',
         function (uiMapConfig, $parse) {
-            var mapEvents = 'bounds_changed center_changed click dblclick drag dragend ' + 'dragstart heading_changed idle maptypeid_changed mousemove mouseout ' + 'mouseover projection_changed resize rightclick tilesloaded tilt_changed ' + 'zoom_changed';
+            var mapEvents = 'complete click dblclick mapmove movestart moveend zoomchange zoomstart zoomend mousemove mousewheel mouseover mouseout mouseup mousedown rightclick dragstart dragging dragend resize touchstart touchmove touchend';
             var options = uiMapConfig || {};
             return {
                 restrict: 'A',
@@ -33,9 +33,9 @@
                     var map;
 
                     var opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
-                    if (opts.uiMapCache && window.uiMapElm) {
-                        elm.replaceWith(window.uiMapElm);
-                        map = window.uiMapData;
+                    if (opts.uiMapCache && window[attrs.uiMapCache]) {
+                        elm.replaceWith(window[attrs.uiMapCache]);
+                        map = window[attrs.uiMapCache+"Map"];
                     } else {
 
                         map = new window.AMap.Map(elm[0], opts);
@@ -84,9 +84,9 @@
                         }
 
                         if (opts.uiMapCache) {
-                            window.uiMapData = map;
+                            window[attrs.uiMapCache+"Map"] = map;
                             scope.$on("$destroy", function () {
-                                window.uiMapElm = elm;
+                                window[attrs.uiMapCache] = elm;
                             });
                         }
                         /*********************** end add AMap plugins ****************/
@@ -104,7 +104,7 @@
         '$parse',
         '$compile',
         function (uiMapInfoWindowConfig, $parse, $compile) {
-            var infoWindowEvents = 'closeclick content_change domready ' + 'position_changed zindex_changed';
+            var infoWindowEvents = 'change open close';
             var options = uiMapInfoWindowConfig || {};
             return {
                 link: function (scope, elm, attrs) {
@@ -153,10 +153,10 @@
         }]);
     }
 
-    mapOverlayDirective('uiMapMarker', 'animation_changed click clickable_changed cursor_changed ' + 'dblclick drag dragend draggable_changed dragstart flat_changed icon_changed ' + 'mousedown mouseout mouseover mouseup position_changed rightclick ' + 'shadow_changed shape_changed title_changed visible_changed zindex_changed');
-    mapOverlayDirective('uiMapPolyline', 'click dblclick mousedown mousemove mouseout mouseover mouseup rightclick');
-    mapOverlayDirective('uiMapPolygon', 'click dblclick mousedown mousemove mouseout mouseover mouseup rightclick');
-    mapOverlayDirective('uiMapRectangle', 'bounds_changed click dblclick mousedown mousemove mouseout mouseover ' + 'mouseup rightclick');
-    mapOverlayDirective('uiMapCircle', 'center_changed click dblclick mousedown mousemove ' + 'mouseout mouseover mouseup radius_changed rightclick');
-    mapOverlayDirective('uiMapGroundOverlay', 'click dblclick');
+    mapOverlayDirective('uiMapMarker', 'click dblclick rightclick mousemove mouseover mouseout mousedown mouseup dragstart dragging dragend moving moveend movealong touchstart touchmove touchend');
+    mapOverlayDirective('uiMapPolyline', 'click dblclick rightclick hide show mousedown mouseup mouseover mouseout change touchstart touchmove touchend');
+    mapOverlayDirective('uiMapPolygon', 'click dblclick rightclick hide show mousedown mouseup mouseover mouseout change touchstart touchmove touchend');
+    //mapOverlayDirective('uiMapRectangle', 'bounds_changed click dblclick mousedown mousemove mouseout mouseover ' + 'mouseup rightclick');
+    mapOverlayDirective('uiMapCircle', 'click dblclick rightclick hide show mousedown mouseup mouseover mouseout change touchstart touchmove touchend');
+    mapOverlayDirective('uiMapGroundImage', 'click dblclick');
 }());

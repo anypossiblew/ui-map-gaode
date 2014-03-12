@@ -3,25 +3,32 @@
 'use strict';
 
 function initCall() {
-  console.log('Google maps api initialized.');
+  console.log('Gaode maps api initialized.');
   angular.bootstrap(document.getElementById('map'), ['doc.ui-map']);
 }
 
-angular.module('doc.ui-map', ['ui.map', 'prettifyDirective', 'ui.bootstrap', 'plunker' ])
+angular.module('doc.ui-map', ['ui.map', 'ui.bootstrap'])
   .controller('MapCtrl', ['$scope', function ($scope) {
 
     $scope.myMarkers = [];
 
-    $scope.mapOptions = {
-      center: new google.maps.LatLng(35.784, -78.670),
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+        $scope.mapOptions = {
+            // map plugin config
+            toolbar: true,
+            scrollzoom: true,
+            maptype: true,
+            overview: true,
+            locatecity: true,
+            // map-self config
+            resizeEnable: true,
+            // ui map config
+            uiMapCache: true
+        }
 
     $scope.addMarker = function ($event, $params) {
-      $scope.myMarkers.push(new google.maps.Marker({
+      $scope.myMarkers.push(new AMap.Marker({
         map: $scope.myMap,
-        position: $params[0].latLng
+        position: $params[0].lnglat
       }));
     };
 
@@ -32,13 +39,13 @@ angular.module('doc.ui-map', ['ui.map', 'prettifyDirective', 'ui.bootstrap', 'pl
 
     $scope.openMarkerInfo = function (marker) {
       $scope.currentMarker = marker;
-      $scope.currentMarkerLat = marker.getPosition().lat();
-      $scope.currentMarkerLng = marker.getPosition().lng();
-      $scope.myInfoWindow.open($scope.myMap, marker);
+      $scope.currentMarkerLat = marker.getPosition().getLat();
+      $scope.currentMarkerLng = marker.getPosition().getLng();
+      $scope.myInfoWindow.open($scope.myMap, marker.getPosition( ));
     };
 
     $scope.setMarkerPosition = function (marker, lat, lng) {
-      marker.setPosition(new google.maps.LatLng(lat, lng));
+      marker.setPosition(new AMap.LngLat(lng, lat));
     };
   }])
 ;

@@ -73,10 +73,10 @@ myAppModule.controller('MapCtrl', ['$scope', function ($scope) {
       locatecity: true,
       
       // map-self config
-      resizeEnable: true, // ÊÇ·ñ¼à¿ØµØÍ¼ÈİÆ÷³ß´ç±ä»¯
+      resizeEnable: true, // æ˜¯å¦ç›‘æ§åœ°å›¾å®¹å™¨å°ºå¯¸å˜åŒ–
       
       // ui map config
-      uiMapCache: true // ÊÇ·ñÊ¹ÓÃ»º´æÀ´»º´æ´Ëmap dom£¬¶ø²»ÊÇÃ¿´ÎÁ´½ÓÌø×ªÀ´¶¼ÖØĞÂ´´½¨
+      uiMapCache: true // æ˜¯å¦ä½¿ç”¨ç¼“å­˜æ¥ç¼“å­˜æ­¤map domï¼Œè€Œä¸æ˜¯æ¯æ¬¡é“¾æ¥è·³è½¬æ¥éƒ½é‡æ–°åˆ›å»º
     };
   }]);
 ```
@@ -85,12 +85,12 @@ myAppModule.controller('MapCtrl', ['$scope', function ($scope) {
 
 [UI.Event](http://angular-ui.github.io/ui-utils/#/event) allows you to specify custom behavior over user events. You just need to prefix the official event by __map-__ to bind a callback to it.  
 
-For example, the _click_ or *zoom_changed* event of the [AMap.Map class](http://api.amap.com/javascript/reference/map) can be used through the UI.Event object keys __map-click__ and **map-zoom_changed** :
+For example, the _click_ or *zoomend* event of the [AMap.Map class](http://api.amap.com/javascript/reference/map) can be used through the UI.Event object keys __map-click__ and **map-zoom_changed** :
 
 ```html
 <section id="map" ng-controller="MapCtrl" >
   <div  ui-map="myMap"ui-options="mapOptions" class="map-canvas" 
-        ui-event="{'map-click': 'addMarker($event, $params)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+        ui-event="{'map-click': 'addMarker($event, $params)', 'map-zoomend': 'setZoomMessage(myMap.getZoom())' }"
   ></div>
 </section>
 ```
