@@ -85,7 +85,7 @@ myAppModule.controller('MapCtrl', ['$scope', function ($scope) {
 
 [UI.Event](http://angular-ui.github.io/ui-utils/#/event) allows you to specify custom behavior over user events. You just need to prefix the official event by __map-__ to bind a callback to it.  
 
-For example, the _click_ or *zoomend* event of the [AMap.Map class](http://api.amap.com/javascript/reference/map) can be used through the UI.Event object keys __map-click__ and **map-zoom_changed** :
+For example, the _click_ or *zoomend* event of the [AMap.Map class](http://api.amap.com/javascript/reference/map) can be used through the UI.Event object keys __map-click__ and **map-zoomend** :
 
 ```html
 <section id="map" ng-controller="MapCtrl" >
