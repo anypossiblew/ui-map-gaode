@@ -6,26 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
     <meta charset="utf-8">
-    <title>jQuery File Upload Demo - AngularJS version</title>
+    <title>高德地图 - AngularJS version</title>
     <meta name="description"
           content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for AngularJS. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Generic page styles -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="demo.css">
 
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-utils/event.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="http://webapi.amap.com/maps?v=1.2&key=53f7e239ddb8ea62ba552742a233ed1f"
-            type="text/javascript"></script>
+    <!--<script src="http://webapi.amap.com/maps?v=1.2&key=53f7e239ddb8ea62ba552742a233ed1f"
+            type="text/javascript"></script>-->
 
     <!-- The main application script -->
     <script src="demo.js"></script>
     <script src="../src/ui-map.js"></script>
 </head>
-<body ng-app="doc.ui-map">
+<body ng-app="doc.ui-map" ui-map-async-load>
 <section id="map" ng-cloak>
     <div class="page-header">
         <h1>高德 Maps</h1>

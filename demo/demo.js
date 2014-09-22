@@ -7,7 +7,13 @@ function initCall() {
   angular.bootstrap(document.getElementById('map'), ['doc.ui-map']);
 }
 
-angular.module('doc.ui-map', ['ui.mapgaode', 'ui.bootstrap'])
+angular.module('doc.ui-map', ['ui.map', 'ui.bootstrap'])
+    .config(['uiMapLoadParamsProvider', function (uiMapLoadParamsProvider) {
+        uiMapLoadParamsProvider.setParams({
+            v: '1.3',
+            key:'53f7e239ddb8ea62ba552742a233ed1f'// your map's develop key
+        });
+    }])
   .controller('MapCtrl', ['$scope', function ($scope) {
 
     $scope.myMarkers = [];
@@ -23,7 +29,7 @@ angular.module('doc.ui-map', ['ui.mapgaode', 'ui.bootstrap'])
             resizeEnable: true,
             // ui map config
             uiMapCache: true
-        }
+        };
 
     $scope.addMarker = function ($event, $params) {
       $scope.myMarkers.push(new AMap.Marker({
